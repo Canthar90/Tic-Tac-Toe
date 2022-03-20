@@ -45,16 +45,32 @@ def drawning(marker, positions_x, positions_o):
 
 def is_it_the_end(score_x, score_o):
 
+    if ('0.1' and '1.2' and '2.3') in score_x or ('0.3' and '1.2' and '2.1') in score_x:
+        diagonal_x = True
+    if ('0.1' and '1.2' and '2.3') in score_o or ('0.3' and '1.2' and '2.1') in score_o:
+        diagonal_o = True
+    if ('1.1' and '1.2' and '1.3') in score_x or ('0.1' and '0.2' and '0.3') in score_x or (
+            '2.1' and '2.2' and '2.3') in score_x:
+        row_x = True
+    if ('1.1' and '1.2' and '1.3') in score_o or ('0.1' and '0.2' and '0.3') in score_o or (
+            '2.1' and '2.2' and '2.3') in score_o:
+        row_o = True
+    if ('0.1' and '1.1' and '2.1') in score_x or ('0.2' and '1.2' and '2.2') in score_x or (
+            '0.3' and '1.3' and '2.3') in score_x:
+        column_x = True
+    if ('0.1' and '1.1' and '2.1') in score_o or ('0.2' and '1.2' and '2.2') in score_o or (
+            '0.3' and '1.3' and '2.3') in score_o:
+        column_o = True
+
+
     if len(score_x)+len(score_o) >= 9:
         print("We have a Draw !!!!")
         return True
-    elif ('0.1' and '1.2' and '2.3') in score_x or ('0.1' and '1.1' and '2.1') in score_x or ('0.1' and '0.2' and '0.3') in score_x or ('0.3' and '1.2' and '2.1') in score_x \
-            or ('1.1' and '1.2' and '1.3') in score_x or ('2.1' and '2.2' and '2.3') in score_x:
+    elif diagonal_x or row_x or column_x:
         print("X Player Winss !!!!")
         return True
 
-    elif ('0.1' and '1.2' and '2.3') in score_o or ('0.1' and '1.1' and '2.1') in score_o or ('0.1' and '0.2' and '0.3') in score_o or ('0.3' and '1.2' and '2.1') in score_o \
-            or ('1.1' and '1.2' and '1.3') in score_o or ('2.1' and '2.2' and '2.3') in score_o:
+    elif diagonal_o or row_o or column_o:
         print("O Player Winss !!!!")
         return True
     return False
